@@ -75,6 +75,7 @@
     <Compile Include="StyleClassApplierTests.cs" />
     <Compile Include="StyleClassTests.cs" />
     <Compile Include="LinkTagCssSourceTests.cs" />
+    <Compile Include="TestContent\TestContentLoader.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PreMailer.Net\PreMailer.Net.csproj">
@@ -84,6 +85,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TestContent\HugeMail.html" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
