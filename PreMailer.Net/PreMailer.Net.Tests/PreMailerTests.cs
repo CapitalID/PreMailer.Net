@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PreMailer.Net.Downloaders;
 using Moq;
+using PreMailer.Net.Tests.TestContent;
 
 namespace PreMailer.Net.Tests
 {
@@ -437,6 +438,16 @@ namespace PreMailer.Net.Tests
 			var premailedOutput = PreMailer.MoveCssInline(input, false);
 
 			Assert.AreEqual(input.Length, premailedOutput.Html.Length);
+		}
+
+		[TestMethod]
+		public void MoveCssInLine_StripHTMLComments()
+		{
+			const string html = @"<html><head><style>\r\n<!--\r\np.custom {font-weight: bold;}\r\n--\r\n></style></head><body><div><p class=""custom"">Hello World!</p></div></body></html>";
+
+			var result = PreMailer.MoveCssInline(html, true, null, null, true, false);
+
+			Assert.AreEqual(@"<html><head></head><body><div><p style=""font-weight: bold"">Hello World!</p></div></body></html>", result.Html);
 		}
 	}
 }
